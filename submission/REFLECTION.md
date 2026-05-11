@@ -4,7 +4,7 @@
 
 **Student:** Duong Quang Dong (2A202600445)
 **Submission date:** 2026-05-11
-**Lab repo URL:** _public GitHub URL_
+**Lab repo URL:** [_public GitHub URL_](https://github.com/West2light/Day23-Track2-Observability-Lab.git)
 
 ---
 
