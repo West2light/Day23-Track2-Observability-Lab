@@ -11,10 +11,14 @@
       "id": 1, "gridPos": {"x": 0, "y": 0, "w": 8, "h": 6},
       "datasource": {"type": "prometheus", "uid": "prometheus"},
       "targets": [{
-        "expr": "100 * (1 - (sum(increase(inference_requests_total{status=\"error\"}[30d])) / sum(increase(inference_requests_total[30d])) / 0.005))",
+        "expr": "100 * (1 - (((sum(increase(inference_requests_total{status=\"error\"}[30d])) / sum(increase(inference_requests_total[30d]))) or vector(0)) / 0.005))",
         "refId": "A"
       }],
-      "fieldConfig": {"defaults": {"unit": "percent",
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none"
+      },
+      "fieldConfig": {"defaults": {"unit": "percent", "min": 0, "max": 100,
         "thresholds": {"mode": "absolute", "steps": [
           {"color": "red", "value": null},
           {"color": "yellow", "value": 25},
