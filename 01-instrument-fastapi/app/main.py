@@ -11,6 +11,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import Response
 from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
 from pydantic import BaseModel
+from opentelemetry import trace
 
 from instrumentation import (
     GPU_UTIL,
@@ -26,13 +27,14 @@ from instrumentation import (
 from inference import simulate_inference, simulate_gpu_load
 
 
+instrument_app = setup_otel()
+
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    setup_otel()
     yield
 
-
 app = FastAPI(title="day23-inference-api", lifespan=lifespan)
+instrument_app(app)
 log = bind_log("main")
 
 
@@ -66,7 +68,7 @@ def metrics() -> Response:
 def predict(req: PredictRequest) -> PredictResponse:
     INFERENCE_ACTIVE.inc()
     start = time.perf_counter()
-    span = tracer.start_span("predict")
+    span = trace.get_current_span()
     span.set_attribute("gen_ai.request.model", req.model)
 
     try:
@@ -117,4 +119,3 @@ def predict(req: PredictRequest) -> PredictResponse:
         )
     finally:
         INFERENCE_ACTIVE.dec()
-        span.end()

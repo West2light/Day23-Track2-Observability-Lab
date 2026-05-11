@@ -20,27 +20,27 @@ Dựa trên `rubric.md`, dưới đây là kế hoạch chi tiết để hoàn t
 - [x] Kiểm tra Cost-and-tokens dashboard hiển thị chi phí dự tính > $0/hr. **Chụp screenshot**.
 
 **Alerts (10 pts):**
-- [ ] Chạy `make alert` để trigger cảnh báo `ServiceDown` trong Alertmanager. **Chụp screenshot**.
-- [ ] Cấu hình Slack Webhook (trong file `.env`) và kiểm tra nhận được cả tin nhắn "Fire" và "Resolve" trên Slack. **Chụp screenshot**.
+- [x] Chạy `make alert` để trigger cảnh báo `ServiceDown` trong Alertmanager. **Chụp screenshot**.
+- [x] Cấu hình Slack Webhook (trong file `.env`) và kiểm tra nhận được cả tin nhắn "Fire" và "Resolve" trên Slack. **Chụp screenshot**.
 
 ## 03-Tracing-and-Logs (20 pts)
-- [ ] Truy cập Jaeger UI, tìm trace của `POST /predict` có 3 child spans. **Chụp screenshot**.
-- [ ] Đảm bảo attributes của span chứa các semantic conventions của GenAI. **Chụp screenshot panel attributes**.
-- [ ] Cấu hình tail-sampling trong OTel Collector (để lại trace lỗi, drop trace thường). Đoạn toán xác suất lấy mẫu cần ghi vào `REFLECTION.md`.
-- [ ] Tìm một log line dạng JSON có chứa `trace_id` (Dán vào `REFLECTION.md`).
+- [x] Truy cập Jaeger UI, tìm trace của `POST /predict` có 3 child spans. **Chụp screenshot**.
+- [x] Đảm bảo attributes của span chứa các semantic conventions của GenAI. **Chụp screenshot panel attributes**.
+- [x] Cấu hình tail-sampling trong OTel Collector (để lại trace lỗi, drop trace thường). Đoạn toán xác suất lấy mẫu cần ghi vào `REFLECTION.md`.
+- [x] Tìm một log line dạng JSON có chứa `trace_id` (Dán vào `REFLECTION.md`).
 
 ## 04-Drift-Detection (15 pts)
-- [ ] Chạy script tạo `drift-summary.json` và đảm bảo có ít nhất 1 feature bị `drift: yes`. (Có thể dùng lệnh `make drift`).
-- [ ] Render HTML report bằng Evidently. **Chụp screenshot**.
-- [ ] Giải thích loại test (PSI/KL/KS/MMD) phù hợp với loại dữ liệu nào trong phần REFLECTION.
+- [x] Chạy script tạo `drift-summary.json` và đảm bảo có ít nhất 1 feature bị `drift: yes`. (Có thể dùng lệnh `make drift`).
+- [x] Render HTML report bằng Evidently. **Chụp screenshot**.
+- [x] Giải thích loại test (PSI/KL/KS/MMD) phù hợp với loại dữ liệu nào trong phần REFLECTION.
 
 ## 05-Integration (10 pts)
-- [ ] Kết nối ít nhất 1 nguồn data của các ngày lab trước (có thể dùng stub data). **Chụp screenshot**.
-- [ ] Kiểm tra dashboard Cross-day hoạt động, hiển thị 6 panels (có data hoặc "No Data"). **Chụp screenshot**.
+- [x] Kết nối ít nhất 1 nguồn data của các ngày lab trước (có thể dùng stub data). **Chụp screenshot**.
+- [x] Kiểm tra dashboard Cross-day hoạt động, hiển thị 6 panels (có data hoặc "No Data"). **Chụp screenshot**.
 
 ## Reflection (15 pts)
-- [ ] Điền đầy đủ thông tin vào các phần 1-5 của file `submission/REFLECTION.md`.
-- [ ] Viết đoạn văn "The single change that mattered most" (Đoạn thay đổi quan trọng nhất) một cách tập trung, chi tiết.
+- [x] Điền đầy đủ thông tin vào các phần 1-5 của file `submission/REFLECTION.md`.
+- [x] Viết đoạn văn "The single change that mattered most" (Đoạn thay đổi quan trọng nhất) một cách tập trung, chi tiết.
 
 ## Bonus (Tùy chọn - Tối đa 20 pts)
 - [ ] **eBPF Profiling:** Tạo flame graph với Pyroscope cho process của app (chỉ trên Linux/WSL).
